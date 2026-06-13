@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JP Design — Invitaciones digitales elegantes para tus momentos especiales. Matrimonios, quinceañeras, baby showers y más.">
+<title>JP Design — Invitaciones Digitales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-pale: #FAF5E9;
+    --gold-dark: #9A7A30;
+    --white: #FFFFFF;
+    --off-white: #FDFCF8;
+    --ink: #1A1A18;
+    --ink-soft: #4A4A42;
+    --ink-muted: #8A8A7E;
+    --border: rgba(201,168,76,0.25);
+    --border-strong: rgba(201,168,76,0.5);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5%;
+    background: rgba(253,252,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--ink); text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-soft);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 8rem 5% 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block; width: 2.5rem; height: 0.5px; background: var(--gold-light);
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--ink); margin-bottom: 0.3em;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--gold);
+  }
+  .hero-sub {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--ink-soft); font-weight: 300;
+    max-width: 480px; line-height: 1.7;
+    margin: 0 auto 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    background: var(--gold); color: var(--white);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .hero-cta:hover { background: var(--gold-dark); transform: translateY(-1px); }
+  .hero-ornament {
+    margin-top: 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.78rem; color: var(--ink-muted); letter-spacing: 0.15em;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-ornament::before, .hero-ornament::after {
+    content: '◇'; color: var(--gold-light); font-size: 0.6rem;
+  }
+
+  /* SECCIONES */
+  section { padding: 6rem 5%; }
+  .section-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2;
+    color: var(--ink); margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-desc {
+    font-size: 0.95rem; color: var(--ink-soft); font-weight: 300;
+    max-width: 520px; line-height: 1.75;
+  }
+  .divider {
+    width: 100%; height: 0.5px;
+    background: linear-gradient(to right, transparent, var(--gold-light), transparent);
+    margin: 0;
+  }
+
+  /* PORTAFOLIO */
+  #portafolio { background: var(--white); }
+  .portfolio-header { text-align: center; margin-bottom: 3.5rem; }
+  .portfolio-header .section-desc { margin: 0 auto; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+  }
+  .portfolio-card {
+    background: var(--off-white);
+    border: 0.5px solid var(--border);
+    position: relative; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .portfolio-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(201,168,76,0.12); }
+  .card-visual {
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .card-visual svg { width: 100%; height: 100%; position: absolute; inset: 0; }
+  .card-label {
+    position: absolute; top: 1rem; left: 1rem;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    background: rgba(253,252,248,0.9); color: var(--gold-dark);
+    padding: 0.3rem 0.75rem; border: 0.5px solid var(--border);
+  }
+  .card-body { padding: 1.25rem 1.5rem 1.5rem; }
+  .card-event {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400; color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+  .card-desc { font-size: 0.82rem; color: var(--ink-muted); font-weight: 300; line-height: 1.6; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 1rem; font-size: 0.75rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--gold); text-decoration: none;
+    border-bottom: 0.5px solid var(--gold-light); padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .card-link:hover { color: var(--gold-dark); border-color: var(--gold-dark); }
+  .card-link::after { content: '→'; font-size: 0.9rem; }
+
+  /* PRECIOS */
+  #precios { background: var(--gold-pale); }
+  .precios-header { text-align: center; margin-bottom: 3rem; }
+  .precios-header .section-desc { margin: 0 auto; }
+  .precios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem; max-width: 950px; margin: 0 auto;
+    align-items: start;
+  }
+  .precio-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    padding: 2rem 1.75rem;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .precio-card:hover { transform: translateY(-3px); }
+  .precio-card.featured {
+    border: 1.5px solid var(--gold);
+    background: var(--white);
+  }
+  .featured-tag {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--gold); color: var(--white);
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.3rem 1.2rem; white-space: nowrap;
+  }
+  .precio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .precio-val {
+    font-size: 2rem; font-weight: 300; color: var(--gold);
+    margin-bottom: 0.2rem; line-height: 1;
+  }
+  .precio-val span { font-size: 1rem; }
+  .precio-per { font-size: 0.75rem; color: var(--ink-muted); margin-bottom: 1.5rem; }
+  .precio-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.75rem; }
+  .precio-features li {
+    font-size: 0.85rem; color: var(--ink-soft); font-weight: 300;
+    display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5;
+  }
+  .precio-features li::before { content: '◇'; color: var(--gold); font-size: 0.55rem; margin-top: 0.35em; flex-shrink: 0; }
+  .precio-btn {
+    display: block; width: 100%; text-align: center;
+    padding: 0.75rem; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer; transition: all 0.2s; border: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .precio-btn-outline {
+    background: transparent; color: var(--gold);
+    border: 0.5px solid var(--gold-light);
+  }
+  .precio-btn-outline:hover { background: var(--gold-pale); border-color: var(--gold); }
+  .precio-btn-solid {
+    background: var(--gold); color: var(--white);
+  }
+  .precio-btn-solid:hover { background: var(--gold-dark); }
+
+  /* CONTACT */
+  #contacto { background: var(--ink); text-align: center; }
+  #contacto .section-eyebrow { color: var(--gold-light); }
+  #contacto .section-title { color: var(--white); }
+  #contacto .section-title em { color: var(--gold); }
+  #contacto .section-desc { color: rgba(255,255,255,0.55); margin: 0 auto 2.5rem; }
+  .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 2.2rem; background: #25D366; color: var(--white);
+    font-size: 0.82rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: opacity 0.2s;
+  }
+  .btn-wa:hover { opacity: 0.88; }
+  .btn-wa svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 2.2rem;
+    border: 0.5px solid rgba(201,168,76,0.4); color: var(--gold-light);
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase;
+    text-decoration: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  .contact-note {
+    margin-top: 2.5rem; font-size: 0.78rem;
+    color: rgba(255,255,255,0.3); letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111110; text-align: center;
+    padding: 2rem 5%;
+    font-size: 0.75rem; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+  footer span { color: var(--gold); }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed; bottom: 1.75rem; right: 1.75rem; z-index: 200;
+    width: 54px; height: 54px; background: #25D366;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(37,211,102,0.45); }
+  .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+  .plan-icon { font-size: 1rem; color: var(--gold-light); margin-bottom: 0.5rem; letter-spacing: 0.3em; }
+  .plan-tagline { font-size: 0.8rem; color: var(--ink-muted); font-weight: 300; margin-bottom: 1.25rem; line-height: 1.5; font-style: italic; }
+  .plan-price-hint {
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem; font-weight: 500;
+    display: flex; align-items: center; gap: 0.4rem;
+  }
+  /* MOBILE */
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    section { padding: 4rem 5%; }
+    .hero { padding: 7rem 5% 4rem; }
+    .contact-actions { flex-direction: column; align-items: center; }
+    .btn-wa, .btn-ghost { width: 100%; justify-content: center; }
+  }
+
+  /* ANIMACIONES */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">JP <span>Design</span></a>
+  <div class="nav-links">
+    <a href="#portafolio">Portafolio</a>
+    <a href="#precios">Precios</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Invitaciones digitales</div>
+  <h1>Cada momento<br>merece ser <em>recordado</em></h1>
+  <p class="hero-sub">Creamos invitaciones digitales únicas para tus eventos especiales. Elegantes, interactivas y listas para compartir en segundos.</p>
+  <a href="#contacto" class="hero-cta">Solicitar mi invitación</a>
+  <div class="hero-ornament">Matrimonios · Quinceañeras · Baby showers · Eventos</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PORTAFOLIO -->
+<section id="portafolio">
+  <div class="portfolio-header fade-up">
+    <div class="section-eyebrow">Nuestro trabajo</div>
+    <h2 class="section-title">Invitaciones que <em>enamoran</em></h2>
+    <p class="section-desc">Cada diseño es único y personalizado. Mira algunos de nuestros proyectos más recientes.</p>
+  </div>
+
+  <div class="portfolio-grid">
+    <!-- Card 1: Quinceañera -->
+    <div class="portfolio-card fade-up">
+      <div class="card-visual" style="background: linear-gradient(135deg, #1a0a2e 0%, #2d1654 100%);">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="g1" cx="50%" cy="40%"><stop offset="0%" stop-color="#C9A84C" stop-opacity="0.2"/><stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="400" height="220" fill="url(#g1)"/>
+          <circle cx="200" cy="90" r="45" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.4"/>
+          <circle cx="200" cy="90" r="35" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+          <text x="200" y="97" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#C9A84C" opacity="0.9">XV</text>
+          <text x="200" y="155" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#E8D5A3" opacity="0.7" font-style="italic">Ana Sofía</text>
+          <line x1="140" y1="160" x2="260" y2="160" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+          <!-- estrellas -->
+          <circle cx="80" cy="40" r="1.5" fill="#C9A84C" opacity="0.5"/>
+          <circle cx="320" cy="60" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="60" cy="170" r="1" fill="#C9A84C" opacity="0.3"/>
+          <circle cx="340" cy="150" r="1.5" fill="#C9A84C" opacity="0.5"/>
+          <circle cx="150" cy="30" r="1" fill="#C9A84C" opacity="0.4"/>
+          <circle cx="260" cy="190" r="1" fill="#C9A84C" opacity="0.3"/>
+        </svg>
+        <div class="card-label">Quinceañera</div>
+      </div>
+      <div class="card-body">
+        <div class="card-event">Ana Sofía — XV años</div>
+        <p class="card-desc">Invitación interactiva con audio, cuenta regresiva y confirmación de asistencia por WhatsApp.</p>
+        <a href="https://tu-usuario.github.io/ana-sofia" class="card-link" target="_blank">Ver invitación</a>
+      </div>
+    </div>
+
+    <!-- Card 2: Matrimonio (muestra) -->
+    <div class="portfolio-card fade-up">
+      <div class="card-visual" style="background: linear-gradient(135deg, #1c1c14 0%, #2a2a1e 100%);">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <text x="200" y="75" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#E8D5A3" opacity="0.5" letter-spacing="4">MATRIMONIO</text>
+          <text x="200" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#C9A84C" font-style="italic">& </text>
+          <text x="160" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#E8D5A3" opacity="0.85">Valeria</text>
+          <text x="240" y="115" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#E8D5A3" opacity="0.85">Andrés</text>
+          <line x1="100" y1="128" x2="300" y2="128" stroke="#C9A84C" stroke-width="0.5" opacity="0.35"/>
+          <text x="200" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#C9A84C" opacity="0.6">12 · 07 · 2025</text>
+          <circle cx="200" cy="108" r="2" fill="#C9A84C" opacity="0.7"/>
+          <rect x="90" y="65" width="220" height="100" rx="0" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+        </svg>
+        <div class="card-label">Matrimonio</div>
+      </div>
+      <div class="card-body">
+        <div class="card-event">Valeria & Andrés</div>
+        <p class="card-desc">Diseño clásico con galería de fotos, mapa de ubicación y página de confirmación personalizada.</p>
+        <a href="#contacto" class="card-link">Pedir diseño similar</a>
+      </div>
+    </div>
+
+    <!-- Card 3: Baby shower (muestra) -->
+    <div class="portfolio-card fade-up">
+      <div class="card-visual" style="background: linear-gradient(135deg, #1a2a2a 0%, #1e3535 100%);">
+        <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="200" cy="105" rx="50" ry="55" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+          <text x="200" y="85" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#E8D5A3" opacity="0.5" letter-spacing="3">BABY</text>
+          <text x="200" y="108" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#C9A84C" font-style="italic">shower</text>
+          <text x="200" y="130" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#E8D5A3" opacity="0.6">Es niña ✦</text>
+          <circle cx="130" cy="60" r="3" fill="#C9A84C" opacity="0.2"/>
+          <circle cx="270" cy="160" r="3" fill="#C9A84C" opacity="0.2"/>
+          <circle cx="290" cy="55" r="2" fill="#C9A84C" opacity="0.15"/>
+          <circle cx="110" cy="165" r="2" fill="#C9A84C" opacity="0.15"/>
+        </svg>
+        <div class="card-label">Baby shower</div>
+      </div>
+      <div class="card-body">
+        <div class="card-event">Baby shower — Es niña</div>
+        <p class="card-desc">Invitación animada con revelación de género, lista de regalos y formulario de asistencia.</p>
+        <a href="#contacto" class="card-link">Pedir diseño similar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRECIOS -->
+<section id="precios">
+  <div class="precios-header fade-up">
+    <div class="section-eyebrow">Paquetes</div>
+    <h2 class="section-title">Elige tu <em>plan ideal</em></h2>
+    <p class="section-desc">Precios claros, sin sorpresas. Todas las invitaciones incluyen link personalizado y diseño exclusivo.</p>
+  </div>
+  <div class="precios-grid">
+    <div class="precio-card fade-up">
+      <div class="plan-icon">✦</div>
+      <div class="precio-name">Esencial</div>
+      <div class="plan-tagline">Para quienes quieren lo justo y bonito</div>
+      <ul class="precio-features">
+        <li>Diseño personalizado</li>
+        <li>Link para compartir por WhatsApp</li>
+        <li>Animaciones de entrada</li>
+        <li>Compatible con móvil y PC</li>
+        <li>Entrega en 5 días hábiles</li>
+      </ul>
+      <div class="plan-price-hint">Consulta el precio →</div>
+      <a href="https://wa.me/573502137920?text=Hola%20JP%20Design,%20me%20interesa%20el%20plan%20Esencial.%20¿Cuánto%20cuesta?" class="precio-btn precio-btn-outline" target="_blank">Preguntar por WhatsApp</a>
+    </div>
+
+    <div class="precio-card featured fade-up">
+      <div class="featured-tag">Más elegido</div>
+      <div class="plan-icon" style="color:var(--gold)">✦✦</div>
+      <div class="precio-name">Completo</div>
+      <div class="plan-tagline">La experiencia completa para tu evento</div>
+      <ul class="precio-features">
+        <li>Todo lo del plan Esencial</li>
+        <li>Música de fondo personalizada</li>
+        <li>Cuenta regresiva al evento</li>
+        <li>Confirmación de asistencia (RSVP)</li>
+        <li>Galería de fotos (hasta 8)</li>
+        <li>Entrega en 4 días hábiles</li>
+      </ul>
+      <div class="plan-price-hint">Consulta el precio →</div>
+      <a href="https://wa.me/573502137920?text=Hola%20JP%20Design,%20me%20interesa%20el%20plan%20Completo.%20¿Cuánto%20cuesta?" class="precio-btn precio-btn-solid" target="_blank">Preguntar por WhatsApp</a>
+    </div>
+
+    <div class="precio-card fade-up">
+      <div class="plan-icon">✦✦✦</div>
+      <div class="precio-name">Premium</div>
+      <div class="plan-tagline">Para eventos que merecen lo mejor</div>
+      <ul class="precio-features">
+        <li>Todo lo del plan Completo</li>
+        <li>Dominio propio (ej. tuevento.com)</li>
+        <li>Mapa interactivo de ubicación</li>
+        <li>Animaciones avanzadas de lujo</li>
+        <li>Soporte postventa 30 días</li>
+        <li>Entrega en 3 días hábiles</li>
+      </ul>
+      <div class="plan-price-hint">Consulta el precio →</div>
+      <a href="https://wa.me/573502137920?text=Hola%20JP%20Design,%20me%20interesa%20el%20plan%20Premium.%20¿Cuánto%20cuesta?" class="precio-btn precio-btn-outline" target="_blank">Preguntar por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="fade-up">
+    <div class="section-eyebrow">Hablemos</div>
+    <h2 class="section-title">¿Listo para crear algo <em>especial</em>?</h2>
+    <p class="section-desc">Cuéntame sobre tu evento y te envío una propuesta personalizada en menos de 24 horas.</p>
+    <div class="contact-actions">
+      <a href="https://wa.me/573502137920?text=Hola%20JP%20Design,%20quiero%20una%20invitación%20digital" class="btn-wa" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+    <p class="contact-note">Respondo en menos de 24 horas · Bogotá, Colombia</p>
+  </div>
+</section>
+
+<footer>
+  © 2025 <span>JP Design</span> · Invitaciones digitales · Bogotá, Colombia
+</footer>
+
+<!-- BOTÓN FLOTANTE WHATSAPP -->
+<a href="https://wa.me/573502137920?text=Hola%20JP%20Design,%20quiero%20información%20sobre%20invitaciones%20digitales" class="wa-float" target="_blank" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
